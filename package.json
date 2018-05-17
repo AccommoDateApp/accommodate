@@ -10,10 +10,13 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "dev": "nodemon"
   },
   "devDependencies": {
+    "nodemon": "^1.17.4",
     "rimraf": "^2.6.2",
+    "ts-node": "^6.0.3",
     "typescript": "^2.8.3"
   },
   "dependencies": {
