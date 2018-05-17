@@ -1,0 +1,12 @@
+{
+  "name": "accommodate",
+  "version": "0.0.1",
+  "description": "An accommodation matchmaking platform.",
+  "main": "index.js",
+  "repository": "https://github.com/accommodateapp/accommodate",
+  "authors": [
+    "Michael Neu <git@michaeln.eu>"
+  ],
+  "license": "MIT",
+  "private": true
+}
