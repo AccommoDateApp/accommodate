@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "importHelpers": true,
+    "module": "commonjs",
+    "strict": true,
+    "target": "es2015",
+    "outDir": "dist/"
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}

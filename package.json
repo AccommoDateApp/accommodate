@@ -8,5 +8,12 @@
     "Michael Neu <git@michaeln.eu>"
   ],
   "license": "MIT",
-  "private": true
+  "private": true,
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.2",
+    "typescript": "^2.8.3"
+  }
 }
