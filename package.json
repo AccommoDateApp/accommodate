@@ -11,12 +11,14 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "lint": "tslint --project ."
   },
   "devDependencies": {
     "nodemon": "^1.17.4",
     "rimraf": "^2.6.2",
     "ts-node": "^6.0.3",
+    "tslint": "^5.10.0",
     "typescript": "^2.8.3"
   },
   "dependencies": {

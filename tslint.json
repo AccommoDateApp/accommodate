@@ -1,0 +1,23 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+      "interface-name": false,
+      "max-line-length": false,
+      "no-console": false,
+      "typedef-whitespace": [
+        true,
+        {
+          "call-signature": "onespace",
+          "index-signature": "nospace",
+          "parameter": "nospace",
+          "property-declaration": "nospace",
+          "variable-declaration": "nospace"
+        }
+      ]
+    },
+    "rulesDirectory": []
+}
