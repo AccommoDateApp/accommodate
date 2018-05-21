@@ -6,3 +6,6 @@ cache: yarn
 
 before_script:
   - yarn lint
+
+after_script:
+  - yarn coverage

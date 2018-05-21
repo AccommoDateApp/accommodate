@@ -13,7 +13,7 @@
     "build": "tsc",
     "clean": "rimraf dist/ coverage/",
     "test": "jest --coverage",
-    "posttest": "codecov -f coverage/*.json",
+    "coverage": "codecov -f coverage/*.json",
     "dev": "nodemon",
     "lint": "tslint --project ."
   },
