@@ -11,13 +11,27 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "clean": "rimraf dist/",
+    "clean": "rimraf dist/ coverage/",
+    "test": "jest --coverage",
     "dev": "nodemon",
     "lint": "tslint --project ."
   },
+  "jest": {
+    "transform": {
+      "^.+\\.ts$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "/test/.*\\.spec\\.ts$",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ]
+  },
   "devDependencies": {
+    "@types/jest": "^22.2.3",
+    "jest": "^22.4.4",
     "nodemon": "^1.17.4",
     "rimraf": "^2.6.2",
+    "ts-jest": "^22.4.6",
     "ts-node": "^6.0.3",
     "tslint": "^5.10.0",
     "typescript": "^2.8.3"
