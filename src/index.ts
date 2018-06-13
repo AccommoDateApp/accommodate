@@ -1,5 +1,6 @@
 import { Container, Service } from "typedi";
 import { Provider } from "./providers";
+import { JWTProvider } from "./providers/jwt";
 import { PersistenceProvider } from "./providers/persistence";
 import { WebProvider } from "./providers/web";
 
@@ -7,9 +8,14 @@ import { WebProvider } from "./providers/web";
 class Application implements Provider {
   private readonly services: Provider[];
 
-  constructor(persistence: PersistenceProvider, web: WebProvider) {
+  constructor(
+    persistence: PersistenceProvider,
+    jwt: JWTProvider,
+    web: WebProvider,
+  ) {
     this.services = [
       persistence,
+      jwt,
       web,
     ];
   }

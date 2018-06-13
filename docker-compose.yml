@@ -9,6 +9,7 @@ services:
     environment:
       - PORT=3000
       - MONGODB_URI=mongodb://mongo/database
+      - JWT_SECRET=very_secure_password_1234567890
     ports:
       - 8080:3000
     command: yarn dev
