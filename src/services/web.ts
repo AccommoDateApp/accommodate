@@ -1,14 +1,19 @@
 import { Application } from "express";
 import { Server } from "http";
 import { join } from "path";
-import { createExpressServer } from "routing-controllers";
+import { createExpressServer, useContainer } from "routing-controllers";
+import { Service as Injectable } from "typedi";
+import { Container } from "typedi";
 import { Service } from ".";
 
+@Injectable()
 export class WebService implements Service {
   private app?: Server;
 
   public async bootstrap() : Promise<void> {
     if (!this.app) {
+      useContainer(Container);
+
       const port = process.env.PORT || 3000;
       const server: Application = createExpressServer({
         controllers: [

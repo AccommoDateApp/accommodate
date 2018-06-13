@@ -1,8 +1,10 @@
-import { Connection, createConnection, EntitySchema, Repository } from "typeorm";
+import { Service as Injectable } from "typedi";
+import { Connection, createConnection, Repository } from "typeorm";
 import { Service } from ".";
 
 type Entity<T> = new () => T;
 
+@Injectable()
 export class PersistenceService implements Service {
   private connection?: Connection;
 
