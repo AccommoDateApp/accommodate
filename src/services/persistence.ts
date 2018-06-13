@@ -5,7 +5,7 @@ import { Service } from ".";
 type Entity<T> = new () => T;
 
 export class PersistenceService implements Service {
-  private connection: Connection;
+  private connection?: Connection;
 
   public async bootstrap() : Promise<void> {
     if (!this.connection) {
@@ -19,10 +19,16 @@ export class PersistenceService implements Service {
   }
 
   public async shutdown() : Promise<void> {
-    await this.connection.close();
+    if (this.connection) {
+      await this.connection.close();
+    }
   }
 
   public getRepository<T>(entity: Entity<T>) : Repository<T> {
-    return this.connection.manager.getRepository<T>(entity);
+    if (this.connection) {
+      return this.connection.manager.getRepository<T>(entity);
+    }
+
+    throw new Error("persistence not connected to server");
   }
 }
