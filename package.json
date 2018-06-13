@@ -10,6 +10,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "typeorm": "typeorm",
     "build": "tsc",
     "clean": "rimraf dist/ coverage/",
     "test": "jest --coverage",
@@ -29,16 +30,20 @@
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",
+    "@types/node": "^8.0.29",
     "codecov": "^3.0.2",
     "jest": "^22.4.4",
     "nodemon": "^1.17.4",
     "rimraf": "^2.6.2",
     "ts-jest": "^22.4.6",
-    "ts-node": "^6.0.3",
+    "ts-node": "^6.1.1",
     "tslint": "^5.10.0",
-    "typescript": "^2.8.3"
+    "typescript": "^2.9.1"
   },
   "dependencies": {
-    "tslib": "^1.9.1"
+    "mongodb": "^3.0.10",
+    "reflect-metadata": "^0.1.10",
+    "tslib": "^1.9.1",
+    "typeorm": "0.2.7"
   }
 }
