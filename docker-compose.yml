@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  node:
+    image: node:alpine
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      - PORT=3000
+      - MONGODB_URI=mongodb://mongo/database
+    ports:
+      - 3000:8080
+    command: yarn dev
+    links:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+
+  mongo_express:
+    image: mongo-express:latest
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+      - ME_CONFIG_MONGODB_AUTH_DATABASE=accommodate
+      - ME_CONFIG_MONGODB_AUTH_USERNAME=user
+      - ME_CONFIG_MONGODB_AUTH_PASSWORD=password
+    links:
+      - mongo
