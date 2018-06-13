@@ -1,13 +1,13 @@
-import { Container, Service as Injectable } from "typedi";
-import { Service } from "./services";
-import { PersistenceService } from "./services/persistence";
-import { WebService } from "./services/web";
+import { Container, Service } from "typedi";
+import { Provider } from "./providers";
+import { PersistenceProvider } from "./providers/persistence";
+import { WebProvider } from "./providers/web";
 
-@Injectable()
-class Application implements Service {
-  private readonly services: Service[];
+@Service()
+class Application implements Provider {
+  private readonly services: Provider[];
 
-  constructor(persistence: PersistenceService, web: WebService) {
+  constructor(persistence: PersistenceProvider, web: WebProvider) {
     this.services = [
       persistence,
       web,
@@ -28,6 +28,6 @@ class Application implements Service {
 }
 
 (async () => {
-  const server = Container.get<Service>(Application);
+  const server = Container.get<Provider>(Application);
   await server.bootstrap();
 })();

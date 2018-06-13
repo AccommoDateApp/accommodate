@@ -1,11 +1,14 @@
-import { Service as Injectable } from "typedi";
+import { Service, Token } from "typedi";
 import { Connection, createConnection, Repository } from "typeorm";
-import { Service } from ".";
+import { Provider } from ".";
 
-type Entity<T> = new () => T;
+export type Entity<T> = new () => T;
+export {
+  Repository,
+};
 
-@Injectable()
-export class PersistenceService implements Service {
+@Service()
+export class PersistenceProvider implements Provider {
   private connection?: Connection;
 
   public async bootstrap() : Promise<void> {

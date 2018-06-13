@@ -2,12 +2,12 @@ import { Application } from "express";
 import { Server } from "http";
 import { join } from "path";
 import { createExpressServer, useContainer } from "routing-controllers";
-import { Service as Injectable } from "typedi";
+import { Service } from "typedi";
 import { Container } from "typedi";
-import { Service } from ".";
+import { Provider } from ".";
 
-@Injectable()
-export class WebService implements Service {
+@Service()
+export class WebProvider implements Provider {
   private app?: Server;
 
   public async bootstrap() : Promise<void> {
