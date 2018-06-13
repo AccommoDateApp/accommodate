@@ -1,18 +1,17 @@
-import { Service, Token } from "typedi";
-import { Connection, createConnection, Repository } from "typeorm";
+import { Container, Service } from "typedi";
+import { Connection, createConnection, Repository, useContainer } from "typeorm";
 import { Provider } from ".";
 
 export type Entity<T> = new () => T;
-export {
-  Repository,
-};
 
 @Service()
 export class PersistenceProvider implements Provider {
-  private connection?: Connection;
+  protected connection?: Connection;
 
   public async bootstrap() : Promise<void> {
     if (!this.connection) {
+      useContainer(Container);
+
       try {
         this.connection = await createConnection();
       } catch (error) {

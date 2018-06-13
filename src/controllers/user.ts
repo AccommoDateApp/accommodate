@@ -1,14 +1,14 @@
 import { Get, JsonController, Param } from "routing-controllers";
+import { Repository } from "typeorm";
+import { InjectRepository } from "typeorm-typedi-extensions";
 import { User } from "../entity/User";
-import { PersistenceProvider, Repository} from "../providers/persistence";
 
 @JsonController("/users")
 export class UserController {
-  private readonly repo: Repository<User>;
-
-  constructor(persistence: PersistenceProvider) {
-    this.repo = persistence.getRepository(User);
-  }
+  constructor(
+    @InjectRepository(User)
+    private readonly repo: Repository<User>,
+  ) { }
 
   @Get()
   public all() {
