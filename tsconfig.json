@@ -4,6 +4,9 @@
       "es5",
       "es6"
     ],
+    "types": [
+      "reflect-metadata"
+    ],
     "moduleResolution": "node",
     "sourceMap": true,
     "experimentalDecorators": true,

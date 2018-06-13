@@ -1,7 +1,6 @@
 import { Application } from "express";
 import { Server } from "http";
 import { join } from "path";
-import "reflect-metadata";
 import { createExpressServer } from "routing-controllers";
 import { Service } from ".";
 
