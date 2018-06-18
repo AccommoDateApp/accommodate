@@ -15,7 +15,7 @@
     "module": "commonjs",
     "strict": true,
     "strictNullChecks": false,
-    "target": "es2015",
+    "target": "es5",
     "outDir": "dist/"
   },
   "include": [
