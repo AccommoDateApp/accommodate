@@ -11,7 +11,7 @@ services:
       - MONGODB_URI=mongodb://mongo/database
       - JWT_SECRET=very_secure_password_1234567890
     ports:
-      - 8080:3000
+      - 8081:3000
     command: yarn dev
     links:
       - mongo
@@ -22,7 +22,7 @@ services:
   mongo_express:
     image: mongo-express:latest
     ports:
-      - 8081:8081
+      - 8082:8081
     environment:
       - ME_CONFIG_MONGODB_SERVER=mongo
       - ME_CONFIG_MONGODB_AUTH_DATABASE=accommodate
