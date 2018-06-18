@@ -1,3 +1,4 @@
+import * as cors from "cors";
 import * as express from "express";
 import { Server } from "http";
 import { join } from "path";
@@ -27,12 +28,14 @@ export class WebProvider implements Provider {
 
       const server = express();
 
+      server.use(cors());
       server.use(this.jwt.getExpressMiddleware());
 
       const routedServer = useExpressServer(server, {
         controllers: [
           join(__dirname, "../controllers/*"),
         ],
+        cors: true,
         development: this.isDevelopment,
       });
 
