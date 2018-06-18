@@ -1,5 +1,6 @@
 import { Request } from "express";
-import { Body, BodyParam, JsonController, Post, Put, Req } from "routing-controllers";
+import { ObjectId } from "mongodb";
+import { Body, BodyParam, Get, JsonController, Param, Post, Put, Req } from "routing-controllers";
 import { Repository } from "typeorm";
 import { InjectRepository } from "typeorm-typedi-extensions";
 import { BaseController } from ".";
@@ -65,7 +66,7 @@ export class UserController extends BaseController {
     }
   }
 
-  @Put("/profile")
+  @Put("/me")
   public async updateProfile(@Req() request: Request, @Body() updatedUser: User) {
     const user = await this.getUserFromRequest(request);
 
@@ -77,6 +78,26 @@ export class UserController extends BaseController {
     await this.repo.save(mergedUser);
 
     return await this.trimUserDetails(mergedUser);
+  }
+
+  @Get("/me")
+  public async getOwnProfile(@Req() request: Request) {
+    const user = await this.getUserFromRequest(request);
+
+    return await this.trimUserDetails(user);
+  }
+
+  @Get("/:id")
+  public async getProfile(@Param("id") id: string) {
+    const users = await this.repo.findByIds([
+      new ObjectId(id),
+    ]);
+
+    if (users.length === 0) {
+      throw new Error("no user with this id");
+    }
+
+    return await this.trimUserDetails(users[0]);
   }
 
   private hashPassword(password: string) : string {
