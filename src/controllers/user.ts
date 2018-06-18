@@ -1,6 +1,8 @@
-import { BodyParam, JsonController, Post } from "routing-controllers";
+import { Request } from "express";
+import { Body, BodyParam, JsonController, Post, Put, Req } from "routing-controllers";
 import { Repository } from "typeorm";
 import { InjectRepository } from "typeorm-typedi-extensions";
+import { BaseController } from ".";
 import { User } from "../entity/User";
 import { JWTProvider } from "../providers/jwt";
 
@@ -9,12 +11,14 @@ import { JWTProvider } from "../providers/jwt";
 const sha = require("sha.js");
 
 @JsonController("/users")
-export class UserController {
+export class UserController extends BaseController {
   constructor(
     @InjectRepository(User)
     private readonly repo: Repository<User>,
     private readonly jwt: JWTProvider,
-  ) { }
+  ) {
+    super(repo);
+  }
 
   @Post("/signup")
   public async signup(@BodyParam("email") email: string, @BodyParam("password") password: string) {
@@ -59,6 +63,20 @@ export class UserController {
     } else {
       throw new Error("invalid credentials");
     }
+  }
+
+  @Put("/profile")
+  public async updateProfile(@Req() request: Request, @Body() updatedUser: User) {
+    const user = await this.getUserFromRequest(request);
+
+    delete updatedUser.email;
+    delete updatedUser.password;
+    delete updatedUser.mode;
+
+    const mergedUser = await this.repo.merge(user, updatedUser);
+    await this.repo.save(mergedUser);
+
+    return await this.trimUserDetails(mergedUser);
   }
 
   private hashPassword(password: string) : string {
