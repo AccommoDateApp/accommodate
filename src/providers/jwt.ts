@@ -1,3 +1,4 @@
+import { RequestHandler } from "express";
 import * as jwt from "express-jwt";
 import { sign } from "jsonwebtoken";
 import { Service } from "typedi";
@@ -9,10 +10,15 @@ export class JWTProvider extends BasicProvider {
     return process.env.JWT_SECRET || "insecure_default_secret";
   }
 
-  public getExpressMiddleware() : jwt.RequestHandler {
+  public getExpressMiddleware() : RequestHandler {
     return jwt({
-      credentialsRequired: false,
+      credentialsRequired: true,
       secret: this.secret,
+    }).unless({
+      path: [
+        "/users/signup",
+        "/users/login",
+      ],
     });
   }
 
