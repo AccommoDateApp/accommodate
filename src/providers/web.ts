@@ -37,6 +37,7 @@ export class WebProvider implements Provider {
         ],
         cors: true,
         development: this.isDevelopment,
+        routePrefix: "/api",
       });
 
       return new Promise<void>((resolve, reject) => {
