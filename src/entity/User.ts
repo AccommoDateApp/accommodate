@@ -1,4 +1,5 @@
-import { Column , Entity, ObjectID, ObjectIdColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column , Entity } from "typeorm";
+import { BaseEntity } from ".";
 
 export enum UserMode {
   Tenant = 0,
@@ -6,11 +7,7 @@ export enum UserMode {
 }
 
 @Entity()
-export class User {
-  @PrimaryGeneratedColumn()
-  @ObjectIdColumn()
-  public id: ObjectID;
-
+export class User extends BaseEntity {
   @Column()
   public email: string;
 
