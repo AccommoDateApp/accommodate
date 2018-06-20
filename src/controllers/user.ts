@@ -52,7 +52,7 @@ export class UserController extends BaseController {
     });
 
     if (users.length === 0) {
-      throw new Error("no user found with this credentials");
+      throw new Error("no user found with these credentials");
     }
 
     const user = users[0];
