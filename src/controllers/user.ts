@@ -24,7 +24,7 @@ export class UserController extends BaseController {
   @Post("/signup")
   public async signup(@BodyParam("email") email: string, @BodyParam("password") password: string) {
     if (!email || !password) {
-      throw new Error("either no body or no email specified");
+      throw new Error("either no password or no email specified");
     }
 
     const existingUsers = await this.repo.find({
@@ -35,14 +35,14 @@ export class UserController extends BaseController {
       throw new Error("user with this email already exists");
     }
 
-    const user = new User();
+    const user = this.repo.create();
     user.email = email;
     user.password = this.hashPassword(password);
 
     this.repo.save(user);
     this.repo.insert(user);
 
-    return await this.login(email, password);
+    return true;
   }
 
   @Post("/login")
