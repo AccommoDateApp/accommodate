@@ -59,7 +59,7 @@ export class UserController extends BaseController {
 
     if (user.password === this.hashPassword(password)) {
       return this.jwt.sign({
-        id: user.id.toHexString(),
+        id: user.id,
       });
     } else {
       throw new Error("invalid credentials");
