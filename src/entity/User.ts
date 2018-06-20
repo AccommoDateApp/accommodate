@@ -15,5 +15,5 @@ export class User extends BaseEntity {
   public password: string;
 
   @Column()
-  public mode: UserMode;
+  public mode: UserMode = UserMode.Tenant;
 }
