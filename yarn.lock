@@ -24,8 +24,8 @@
     "@types/node" "*"
 
 "@types/bson@*":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@types/bson/-/bson-1.0.8.tgz#6ad272b3f049e9598ec33aed09cf56d8946b75f1"
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@types/bson/-/bson-1.0.9.tgz#0a042ac50d879c4a842a269586162e12010f6ebd"
   dependencies:
     "@types/node" "*"
 
@@ -89,8 +89,8 @@
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-2.0.0.tgz#5a7306e367c539b9f6543499de8dd519fac37a8b"
 
 "@types/mongodb@^3.0.20":
-  version "3.0.20"
-  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.0.20.tgz#08c9d82a8bdb00f9fb91bd0f56da5a8d68f78f36"
+  version "3.0.21"
+  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.0.21.tgz#f2a7838d2870ed1e9cf0eb9933c786a23e6b7a68"
   dependencies:
     "@types/bson" "*"
     "@types/events" "*"
@@ -103,8 +103,8 @@
     "@types/express" "*"
 
 "@types/node@*":
-  version "10.3.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.3.2.tgz#3840ec6c12556fdda6e0e6d036df853101d732a4"
+  version "10.3.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.3.4.tgz#c74e8aec19e555df44609b8057311052a2c84d9e"
 
 "@types/node@^8.0.29":
   version "8.10.19"
