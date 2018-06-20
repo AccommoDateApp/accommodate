@@ -37,6 +37,7 @@
     "@types/express-jwt": "^0.0.40",
     "@types/jest": "^22.2.3",
     "@types/jsonwebtoken": "^7.2.7",
+    "@types/mongodb": "^3.0.21",
     "@types/multer": "^1.3.6",
     "@types/node": "^8.0.29",
     "codecov": "^3.0.2",
@@ -51,6 +52,7 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "class-transformer": "^0.1.9",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "express-jwt": "^5.3.1",
@@ -59,6 +61,7 @@
     "multer": "^1.3.0",
     "reflect-metadata": "^0.1.10",
     "routing-controllers": "^0.7.7",
+    "sha.js": "^2.4.11",
     "tslib": "^1.9.1",
     "typedi": "^0.7.3",
     "typeorm": "0.2.7",
