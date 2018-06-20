@@ -16,8 +16,8 @@ export class JWTProvider extends BasicProvider {
       secret: this.secret,
     }).unless({
       path: [
-        "/users/signup",
-        "/users/login",
+        "/api/users/signup",
+        "/api/users/login",
       ],
     });
   }
