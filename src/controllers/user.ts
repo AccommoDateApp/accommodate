@@ -39,8 +39,7 @@ export class UserController extends BaseController {
     user.email = email;
     user.password = this.hashPassword(password);
 
-    this.repo.save(user);
-    this.repo.insert(user);
+    await this.repo.save(user);
 
     return true;
   }
