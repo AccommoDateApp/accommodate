@@ -12,21 +12,26 @@ describe("UserController", () => {
 
   beforeEach(async (done) => {
     persistence = new MockPersistenceProvider();
-    await persistence.bootstrap();
+    try {
+      await persistence.bootstrap();
+      await persistence.clear();
 
-    jwt = new JWTProvider();
-    await jwt.bootstrap();
+      jwt = new JWTProvider();
+      await jwt.bootstrap();
 
-    repo = persistence.getRepository(User);
-    controller = new UserController(repo, jwt);
-
-    done();
+      repo = persistence.getRepository(User);
+      controller = new UserController(repo, jwt);
+    } finally {
+      done();
+    }
   });
 
   afterEach(async (done) => {
-    await persistence.shutdown();
-
-    done();
+    try {
+      await persistence.shutdown();
+    } finally {
+      done();
+    }
   });
 
   it("creates users", async () => {
