@@ -4,6 +4,9 @@ import * as sha from "sha.js";
 import { Repository } from "typeorm";
 import { InjectRepository } from "typeorm-typedi-extensions";
 import { BaseController } from ".";
+import { Bio, UserMode } from "../entity/bio";
+import { LandlordBio } from "../entity/LandlordBio";
+import { TenantBio } from "../entity/TenantBio";
 import { User } from "../entity/User";
 import { JWTProvider } from "../providers/jwt";
 
@@ -18,7 +21,11 @@ export class UserController extends BaseController {
   }
 
   @Post("/signup")
-  public async signup(@BodyParam("email") email: string, @BodyParam("password") password: string) {
+  public async signup(
+    @BodyParam("email") email: string,
+    @BodyParam("password") password: string,
+    @BodyParam("mode") mode: UserMode,
+  ) {
     if (!email || !password) {
       throw new Error("either no password or no email specified");
     }
@@ -31,10 +38,26 @@ export class UserController extends BaseController {
       throw new Error("user with this email already exists");
     }
 
+    let bio: Bio;
+
+    switch (mode) {
+      case UserMode.Landlord:
+        bio = new LandlordBio();
+        break;
+
+      case UserMode.Tenant:
+        bio = new TenantBio();
+        break;
+
+      default:
+        throw new Error("invalid mode");
+    }
+
     const user = this.repo.create();
 
     user.email = email;
     user.password = this.hashPassword(password);
+    user.bio = bio;
 
     await this.repo.save(user);
 
