@@ -15,7 +15,7 @@
     "typeorm": "typeorm",
     "build": "tsc",
     "clean": "rimraf dist/ coverage/",
-    "test": "jest --coverage",
+    "test": "jest --coverage --runInBand",
     "coverage": "codecov -f coverage/*.json",
     "dev": "nodemon",
     "lint": "tslint --project ."
