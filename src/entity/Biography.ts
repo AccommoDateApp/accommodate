@@ -21,9 +21,6 @@ export abstract class Biography extends BaseEntity {
   public phoneNumber: string;
 
   @Column()
-  public mode: UserMode;
-
-  @Column()
   public gender: Gender;
 
   @Column()
