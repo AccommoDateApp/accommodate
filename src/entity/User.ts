@@ -1,10 +1,6 @@
 import { Column , Entity } from "typeorm";
 import { BaseEntity } from ".";
-
-export enum UserMode {
-  Tenant = 0,
-  Landlord = 1,
-}
+import { Biography } from "./Biography";
 
 @Entity()
 export class User extends BaseEntity {
@@ -15,5 +11,5 @@ export class User extends BaseEntity {
   public password: string;
 
   @Column()
-  public mode: UserMode = UserMode.Tenant;
+  public bio: Biography;
 }
