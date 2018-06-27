@@ -4,7 +4,7 @@ import * as sha from "sha.js";
 import { Repository } from "typeorm";
 import { InjectRepository } from "typeorm-typedi-extensions";
 import { BaseController } from ".";
-import { Biography, UserMode } from "../entity/Bio";
+import { Biography, UserMode } from "../entity/Biography";
 import { LandlordBio } from "../entity/LandlordBio";
 import { TenantBio } from "../entity/TenantBio";
 import { User } from "../entity/User";

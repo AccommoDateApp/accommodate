@@ -1,6 +1,6 @@
 import { Repository } from "typeorm";
 import { UserController } from "../../src/controllers/user";
-import { UserMode } from "../../src/entity/Bio";
+import { UserMode } from "../../src/entity/Biography";
 import { User } from "../../src/entity/User";
 import { JWTProvider } from "../../src/providers/jwt";
 import { MockPersistenceProvider } from "../mock/persistence";

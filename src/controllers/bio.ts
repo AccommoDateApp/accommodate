@@ -4,7 +4,7 @@ import { Body, Get, JsonController, Param, Put, Req } from "routing-controllers"
 import { Repository } from "typeorm";
 import { InjectRepository } from "typeorm-typedi-extensions";
 import { BaseController } from ".";
-import { Biography } from "../entity/Bio";
+import { Biography } from "../entity/Biography";
 import { User } from "../entity/User";
 
 @JsonController("/bio")
