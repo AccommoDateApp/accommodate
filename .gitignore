@@ -6,3 +6,5 @@ coverage/
 build/
 tmp/
 temp/
+yarn-error.log
+vim.exe.stackdump

@@ -1,5 +1,6 @@
 import { Transform } from "class-transformer";
-import { ObjectID, ObjectIdColumn, PrimaryGeneratedColumn } from "typeorm";
+import { ObjectID } from "mongodb";
+import { ObjectIdColumn, PrimaryGeneratedColumn } from "typeorm";
 
 const objectIdToHex = (value: any) => {
   const hex: string[] = [];
