@@ -1,7 +1,7 @@
 import { Column , Entity } from "typeorm";
 import { BaseEntity } from ".";
-import { PowerUp } from "./PowerUp";
 import { Biography } from "./Biography";
+import { PowerUp } from "./PowerUp";
 
 export enum UserMode {
   Tenant = 0,
