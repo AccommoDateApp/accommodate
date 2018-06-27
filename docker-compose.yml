@@ -7,9 +7,13 @@ services:
       - .:/app
     working_dir: /app
     environment:
+      - COMPOSE_CONVERT_WINDOWS_PATHS=1
       - PORT=3000
       - MONGODB_URI=mongodb://mongo/database
       - JWT_SECRET=very_secure_password_1234567890
+      - CLOUDINARY_API_KEY=
+      - CLOUDINARY_API_SECRET=
+      - CLOUDINARY_CLOUD_NAME=
     ports:
       - 8081:3000
     command: yarn dev

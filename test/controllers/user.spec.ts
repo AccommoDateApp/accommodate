@@ -1,5 +1,6 @@
 import { Repository } from "typeorm";
 import { UserController } from "../../src/controllers/user";
+import { UserMode } from "../../src/entity/Biography";
 import { User } from "../../src/entity/User";
 import { JWTProvider } from "../../src/providers/jwt";
 import { MockPersistenceProvider } from "../mock/persistence";
@@ -40,7 +41,7 @@ describe("UserController", () => {
     const initialUserCount = await repo.count();
     expect(initialUserCount).toBe(0);
 
-    await controller.signup("foo@bar.com", "foobar");
+    await controller.signup("foo@bar.com", "foobar", UserMode.Tenant);
 
     const finalUserCount = await repo.count();
     expect(finalUserCount).toBe(1);
@@ -52,7 +53,7 @@ describe("UserController", () => {
     const email = "foo@bar.com";
     const password = "foobar";
 
-    await controller.signup(email, password);
+    await controller.signup(email, password, UserMode.Tenant);
 
     const token = await controller.login(email, password);
     expect(token).not.toBe("");

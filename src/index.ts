@@ -1,5 +1,6 @@
 import { Container, Service } from "typedi";
 import { Provider } from "./providers";
+import { CloudinaryProvider } from "./providers/cloudinary";
 import { JWTProvider } from "./providers/jwt";
 import { PersistenceProvider } from "./providers/persistence";
 import { WebProvider } from "./providers/web";
@@ -12,11 +13,13 @@ class Application implements Provider {
     persistence: PersistenceProvider,
     jwt: JWTProvider,
     web: WebProvider,
+    cloudinary: CloudinaryProvider,
   ) {
     this.services = [
       persistence,
       jwt,
       web,
+      cloudinary,
     ];
   }
 

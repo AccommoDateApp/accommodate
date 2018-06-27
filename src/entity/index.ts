@@ -18,7 +18,7 @@ const objectIdToHex = (value: any) => {
               .join("");
 };
 
-export class BaseEntity {
+export abstract class BaseEntity {
   @PrimaryGeneratedColumn()
   @ObjectIdColumn()
   @Transform(objectIdToHex, { toPlainOnly: true })

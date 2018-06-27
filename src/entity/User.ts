@@ -1,6 +1,7 @@
 import { Column , Entity } from "typeorm";
 import { BaseEntity } from ".";
 import { PowerUp } from "./PowerUp";
+import { Biography } from "./Biography";
 
 export enum UserMode {
   Tenant = 0,
@@ -20,4 +21,7 @@ export class User extends BaseEntity {
 
   @Column()
   public powerups: PowerUp[] = [];
+
+  @Column()
+  public bio: Biography;
 }
