@@ -1,5 +1,5 @@
 import { Column, Entity } from "typeorm";
-import { Bio, UserMode } from "./bio";
+import { Bio, UserMode } from "./Bio";
 import { Preference } from "./Preference";
 import { RealEstateType } from "./RealEstate";
 

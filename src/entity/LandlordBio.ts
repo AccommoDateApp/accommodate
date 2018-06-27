@@ -1,5 +1,5 @@
 import { Column, Entity } from "typeorm";
-import { Bio, UserMode } from "./bio";
+import { Bio, UserMode } from "./Bio";
 import { RealEstate } from "./RealEstate";
 
 @Entity()
