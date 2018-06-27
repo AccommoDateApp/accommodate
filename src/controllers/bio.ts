@@ -4,7 +4,7 @@ import { Body, Get, JsonController, Param, Put, Req } from "routing-controllers"
 import { Repository } from "typeorm";
 import { InjectRepository } from "typeorm-typedi-extensions";
 import { BaseController } from ".";
-import { Bio } from "../entity/Bio";
+import { Biography } from "../entity/Bio";
 import { User } from "../entity/User";
 
 @JsonController("/bio")
@@ -24,7 +24,7 @@ export class BioController extends BaseController {
   }
 
   @Put("/")
-  public async updateBio(@Req() request: Request, @Body() updatedBio: Bio) {
+  public async updateBio(@Req() request: Request, @Body() updatedBio: Biography) {
     const user = await this.getUserFromRequest(request);
 
     Object.keys(updatedBio)

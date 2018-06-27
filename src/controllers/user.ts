@@ -4,7 +4,7 @@ import * as sha from "sha.js";
 import { Repository } from "typeorm";
 import { InjectRepository } from "typeorm-typedi-extensions";
 import { BaseController } from ".";
-import { Bio, UserMode } from "../entity/Bio";
+import { Biography, UserMode } from "../entity/Bio";
 import { LandlordBio } from "../entity/LandlordBio";
 import { TenantBio } from "../entity/TenantBio";
 import { User } from "../entity/User";
@@ -38,7 +38,7 @@ export class UserController extends BaseController {
       throw new Error("user with this email already exists");
     }
 
-    let bio: Bio;
+    let bio: Biography;
 
     switch (mode) {
       case UserMode.Landlord:

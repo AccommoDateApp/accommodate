@@ -11,7 +11,7 @@ export enum Gender {
   Female = 1,
 }
 
-export abstract class Bio extends BaseEntity {
+export abstract class Biography extends BaseEntity {
   [key: string]: any;
 
   @Column()

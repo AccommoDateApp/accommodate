@@ -1,10 +1,10 @@
 import { Column, Entity } from "typeorm";
-import { Bio, UserMode } from "./Bio";
+import { Biography, UserMode } from "./Bio";
 import { Preference } from "./Preference";
 import { RealEstateType } from "./RealEstate";
 
 @Entity()
-export class TenantBio extends Bio {
+export class TenantBio extends Biography {
   @Column()
   public mode: UserMode = UserMode.Tenant;
 
