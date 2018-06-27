@@ -4,7 +4,7 @@ import { Repository } from "typeorm";
 import { User } from "../entity/User";
 
 export class BaseController {
-  constructor(private readonly users: Repository<User>) { }
+  constructor(protected readonly users: Repository<User>) { }
 
   protected async getUserFromRequest(request: Request) : Promise<User> {
     const { id } = request.user;

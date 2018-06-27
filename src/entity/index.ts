@@ -8,7 +8,7 @@ const objectIdToHex = (value: any) => {
     if (i <= 15) {
       hex[i] = "0" + i.toString(16);
     } else {
-      hex[i] = i.toString(15);
+      hex[i] = i.toString(16);
     }
   }
 
