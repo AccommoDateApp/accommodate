@@ -9,16 +9,16 @@ export class TenantBiography extends Biography {
   public mode: UserMode = UserMode.Tenant;
 
   @Column()
-  public age: number;
+  public age: number = 18;
 
   @Column()
-  public images: string[];
+  public images: string[] = [];
 
   @Column()
-  public language: string;
+  public language: string = "";
 
   @Column()
-  public education: string;
+  public education: string = "";
 
   @Column()
   public preferences = [

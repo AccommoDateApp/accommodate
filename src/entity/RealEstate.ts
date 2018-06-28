@@ -16,22 +16,22 @@ export class RealEstate extends BaseEntity {
   public landlordBiography: LandlordBiography;
 
   @Column()
-  public name: string;
+  public name: string = "";
 
   @Column()
-  public description: string;
+  public description: string = "";
 
   @Column()
-  public type: RealEstateType;
+  public type: RealEstateType = RealEstateType.Apartment;
 
   @Column()
-  public location: Location;
+  public location: Location = new Location();
 
   @Column()
   public images: string[] = [];
 
   @Column()
-  public rent: number;
+  public rent: number = 0;
 
   @Column()
   public preferences: Preference[] = [
