@@ -6,7 +6,7 @@ import { InjectRepository } from "typeorm-typedi-extensions";
 import { BaseController } from ".";
 import { Biography, UserMode } from "../entity/Biography";
 import { LandlordBiography } from "../entity/LandlordBiography";
-import { TenantBio } from "../entity/TenantBio";
+import { TenantBiography } from "../entity/TenantBiography";
 import { User } from "../entity/User";
 import { JWTProvider } from "../providers/jwt";
 
@@ -46,7 +46,7 @@ export class UserController extends BaseController {
         break;
 
       case UserMode.Tenant:
-        bio = new TenantBio();
+        bio = new TenantBiography();
         break;
 
       default:

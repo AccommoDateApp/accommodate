@@ -4,7 +4,7 @@ import { Preference } from "./Preference";
 import { RealEstateType } from "./RealEstate";
 
 @Entity()
-export class TenantBio extends Biography {
+export class TenantBiography extends Biography {
   @Column()
   public mode: UserMode = UserMode.Tenant;
 

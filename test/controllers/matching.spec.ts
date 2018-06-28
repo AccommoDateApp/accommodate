@@ -1,11 +1,9 @@
-import {MatchingController} from "../../src/controllers/matching";
-import {MockPersistenceProvider} from "../mock/persistence";
-import {User} from "../../src/entity/User";
-import {Match} from "../../src/entity/Match";
-import {RealEstate} from "../../src/entity/RealEstate";
 import { Repository} from "typeorm";
-import {TenantBio} from "../../src/entity/TenantBio";
-import {Buffer} from "buffer";
+import { MatchingController } from "../../src/controllers/matching";
+import { Match } from "../../src/entity/Match";
+import { RealEstate } from "../../src/entity/RealEstate";
+import { User } from "../../src/entity/User";
+import { MockPersistenceProvider } from "../mock/persistence";
 
 describe("The MatchingController", () => {
 
@@ -26,7 +24,7 @@ describe("The MatchingController", () => {
       matchRepo = persistence.getRepository(Match);
 
       matchingController =
-        new MatchingController(userRepo, matchRepo, realEstateRepo)
+        new MatchingController(userRepo, matchRepo, realEstateRepo);
     } finally {
       done();
     }
@@ -46,7 +44,7 @@ describe("The MatchingController", () => {
   it("returns the available matches.", async () => {
     const user = await addFiveMatchesToUser(userRepo, matchRepo);
     const actualMatches = await matchingController.getActualMatches({ user } as any);
-    expect(actualMatches.length).toBe(5)
+    expect(actualMatches.length).toBe(5);
   });
 
   it("creates new matches.", async () => {
