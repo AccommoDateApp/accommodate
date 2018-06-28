@@ -24,7 +24,7 @@ export class BioController extends BaseController {
   }
 
   @Put("/")
-  public async updateBio(@Req() request: Request, @Body() updatedBio: Biography) {
+  public async updateBio(@Req() request: Request, @Body() updatedBio: Partial<Biography>) {
     const user = await this.getUserFromRequest(request);
 
     Object.keys(updatedBio)
