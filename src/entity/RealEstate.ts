@@ -1,6 +1,5 @@
 import { Column, Entity } from "typeorm";
 import { BaseEntity } from ".";
-import { LandlordBiography } from "./LandlordBiography";
 import { Location } from "./Location";
 import { Preference } from "./Preference";
 
@@ -13,10 +12,7 @@ export enum RealEstateType {
 @Entity("realEstate")
 export class RealEstate extends BaseEntity {
   @Column()
-  public landlordBiography: LandlordBiography;
-
-  @Column()
-  public name: string = "";
+  public name: string = "Real Estate";
 
   @Column()
   public description: string = "";

@@ -8,5 +8,7 @@ export class LandlordBiography extends Biography {
   public mode: UserMode = UserMode.Landlord;
 
   @Column()
-  public realEstates: RealEstate[] = [];
+  public realEstates: RealEstate[] = [
+    new RealEstate(),
+  ];
 }
