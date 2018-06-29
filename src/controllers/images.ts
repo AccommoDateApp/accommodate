@@ -1,4 +1,5 @@
 import { Request } from "express";
+import { ObjectId } from "mongodb";
 import { BodyParam, JsonController, Post, Req, UploadedFile } from "routing-controllers";
 import { Repository } from "typeorm";
 import { InjectRepository } from "typeorm-typedi-extensions";
@@ -38,12 +39,13 @@ export class ImagesController extends BaseController {
   @Post("/accommodation")
   public async uploadAccommodationImage(@Req() request: Request, @UploadedFile("image") uploadedImage: any, @BodyParam("id") id: string) {
     const user = await this.getUserFromRequest(request);
+    const accommodationId = new ObjectId(id);
 
     if (user.mode === UserMode.Landlord) {
       const bio = user.bio as LandlordBiography;
 
       for (const estate of bio.realEstates) {
-        if (estate.id.toHexString() === id) {
+        if (accommodationId.equals(estate.id)) {
           const image = await this.uploadImage(uploadedImage);
 
           estate.images.push(image.url);
