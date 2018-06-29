@@ -12,7 +12,9 @@ export class TenantBiography extends Biography {
   public age: number = 18;
 
   @Column()
-  public images: string[] = [];
+  public images: string[] = [
+    process.env.DEFAULT_TENANT_IMAGE,
+  ];
 
   @Column()
   public language: string = "";

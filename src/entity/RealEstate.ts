@@ -24,7 +24,9 @@ export class RealEstate extends BaseEntity {
   public location: Location = new Location();
 
   @Column()
-  public images: string[] = [];
+  public images: string[] = [
+    process.env.DEFAULT_REALESTATE_IMAGE,
+  ];
 
   @Column()
   public rent: number = 0;

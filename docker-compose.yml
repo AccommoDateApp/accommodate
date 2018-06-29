@@ -14,6 +14,8 @@ services:
       - CLOUDINARY_API_KEY=
       - CLOUDINARY_API_SECRET=
       - CLOUDINARY_CLOUD_NAME=
+      - DEFAULT_TENANT_IMAGE=http://placehold.it/300x300
+      - DEFAULT_REALESTATE_IMAGE=http://placehold.it/300x300
     ports:
       - 8081:3000
     command: yarn dev
