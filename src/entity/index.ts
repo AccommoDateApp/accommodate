@@ -2,7 +2,7 @@ import { Transform } from "class-transformer";
 import { ObjectID } from "mongodb";
 import { ObjectIdColumn, PrimaryGeneratedColumn } from "typeorm";
 
-const objectIdToHex = (value: any) => {
+export const objectIdToHex = (value: any) => {
   const hex: string[] = [];
 
   for (let i = 0; i < 256; i++) {
@@ -23,5 +23,5 @@ export abstract class BaseEntity {
   @PrimaryGeneratedColumn()
   @ObjectIdColumn()
   @Transform(objectIdToHex, { toPlainOnly: true })
-  public id: ObjectID;
+  public id: ObjectID = new ObjectID();
 }
