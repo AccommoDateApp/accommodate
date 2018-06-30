@@ -38,8 +38,8 @@ export class BioController extends BaseController {
     return user.bio;
   }
 
-  @Post("/accommodation")
-  public async createAccommodation(@Req() request: Request) {
+  @Post("/realestate")
+  public async createRealEstate(@Req() request: Request) {
     const user = await this.getUserFromRequest(request);
 
     if (user.mode === UserMode.Landlord) {

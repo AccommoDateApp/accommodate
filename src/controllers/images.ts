@@ -36,16 +36,16 @@ export class ImagesController extends BaseController {
     throw new Error("not a tenant");
   }
 
-  @Post("/accommodation")
-  public async uploadAccommodationImage(@Req() request: Request, @UploadedFile("image") uploadedImage: any, @BodyParam("id") id: string) {
+  @Post("/realestate")
+  public async uploadRealEstateImage(@Req() request: Request, @UploadedFile("image") uploadedImage: any, @BodyParam("id") id: string) {
     const user = await this.getUserFromRequest(request);
-    const accommodationId = new ObjectId(id);
+    const realEstateId = new ObjectId(id);
 
     if (user.mode === UserMode.Landlord) {
       const bio = user.bio as LandlordBiography;
 
       for (const estate of bio.realEstates) {
-        if (accommodationId.equals(estate.id)) {
+        if (realEstateId.equals(estate.id)) {
           const image = await this.uploadImage(uploadedImage);
 
           estate.images.push(image.url);
