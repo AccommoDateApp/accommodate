@@ -4,14 +4,14 @@ import { BaseEntity } from ".";
 @Entity()
 export class Location extends BaseEntity {
   @Column()
-  public address: string;
+  public address: string = "";
 
   @Column()
-  public area: string;
+  public area: string = "";
 
   @Column()
-  public latitude: number;
+  public latitude: number = 0;
 
   @Column()
-  public longitude: number;
+  public longitude: number = 0;
 }

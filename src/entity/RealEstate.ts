@@ -1,6 +1,5 @@
 import { Column, Entity } from "typeorm";
 import { BaseEntity } from ".";
-import { LandlordBiography } from "./LandlordBiography";
 import { Location } from "./Location";
 import { Preference } from "./Preference";
 
@@ -13,25 +12,24 @@ export enum RealEstateType {
 @Entity("realEstate")
 export class RealEstate extends BaseEntity {
   @Column()
-  public landlordBiography: LandlordBiography;
+  public name: string = "Real Estate";
 
   @Column()
-  public name: string;
+  public description: string = "";
 
   @Column()
-  public description: string;
+  public type: RealEstateType = RealEstateType.Apartment;
 
   @Column()
-  public type: RealEstateType;
+  public location: Location = new Location();
 
   @Column()
-  public location: Location;
+  public images: string[] = [
+    process.env.DEFAULT_REALESTATE_IMAGE,
+  ];
 
   @Column()
-  public images: string[] = [];
-
-  @Column()
-  public rent: number;
+  public rent: number = 0;
 
   @Column()
   public preferences: Preference[] = [

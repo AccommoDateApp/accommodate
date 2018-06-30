@@ -55,6 +55,7 @@ export class UserController extends BaseController {
 
     const user = this.repo.create();
 
+    user.mode = mode;
     user.email = email;
     user.password = this.hashPassword(password);
     user.bio = bio;
