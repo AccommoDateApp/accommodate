@@ -18,7 +18,7 @@ export class PowerUpsController extends BaseController {
     super(users);
   }
 
-  @Get("/")
+  @Get("/store")
   public async getAvailablePowerUps(@Req() request: Request) {
     const user = await this.getUserFromRequest(request);
 
@@ -27,7 +27,7 @@ export class PowerUpsController extends BaseController {
     });
   }
 
-  @Post("/")
+  @Post("/store")
   public async buyPowerUp(@Req() request: Request, @BodyParam("id") powerupId: string, @BodyParam("quantity") quantity: number = 1) {
     const user = await this.getUserFromRequest(request);
     const powerups = await this.powerups.findByIds([
