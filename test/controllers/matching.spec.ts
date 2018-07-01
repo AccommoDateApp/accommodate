@@ -1,9 +1,9 @@
 import { Repository} from "typeorm";
 import { MatchingController } from "../../src/controllers/matching";
 import { Match } from "../../src/entity/Match";
-import { RealEstate } from "../../src/entity/RealEstate";
-import { User } from "../../src/entity/User";
 import { MockPersistenceProvider } from "../mock/persistence";
+import { RejectedMatch } from "../../src/entity/RejectedMatch";
+import { User } from "../../src/entity/User";
 
 describe("The MatchingController", () => {
 
@@ -11,20 +11,19 @@ describe("The MatchingController", () => {
   let persistence: MockPersistenceProvider;
   let matchRepo: Repository<Match>;
   let userRepo: Repository<User>;
-  let realEstateRepo: Repository<RealEstate>;
+  let rejectedMatchRepo: Repository<RejectedMatch>;
 
   const setUp = async (done: any) => {
     persistence = new MockPersistenceProvider();
     try {
       await persistence.bootstrap();
       await persistence.clear();
-
       userRepo = persistence.getRepository(User);
-      realEstateRepo = persistence.getRepository(RealEstate);
+      rejectedMatchRepo = persistence.getRepository(RejectedMatch);
       matchRepo = persistence.getRepository(Match);
 
       matchingController =
-        new MatchingController(userRepo, matchRepo, realEstateRepo);
+        new MatchingController(userRepo, matchRepo, rejectedMatchRepo);
     } finally {
       done();
     }
@@ -44,12 +43,12 @@ describe("The MatchingController", () => {
   // TODO: fix failing test
   // it("returns the available matches.", async () => {
   //   const user = await addFiveMatchesToUser(userRepo, matchRepo);
-  //   const actualMatches = await matchingController.getActualMatches({ user } as any);
+  //   const actualMatches = await matchingController.getUserMatches({ user } as any);
   //   expect(actualMatches.length).toBe(5);
   // });
 
   it("creates new matches.", async () => {
-    const realEstate = await realEstateRepo.save(realEstateRepo.create());
+    const realEstate = await rejectedMatchRepo.save(rejectedMatchRepo.create());
     const realEstateID = realEstate.id.toString();
     const tenant = await userRepo.save(userRepo.create());
     const tenantUserID = tenant.id.toString();
