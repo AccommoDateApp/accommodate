@@ -18,6 +18,13 @@ export class PowerUpsController extends BaseController {
     super(users);
   }
 
+  @Get("/")
+  public async getUserPowerUps(@Req() request: Request) {
+    const user = await this.getUserFromRequest(request);
+
+    return user.powerups;
+  }
+
   @Get("/store")
   public async getAvailablePowerUps(@Req() request: Request) {
     const user = await this.getUserFromRequest(request);
